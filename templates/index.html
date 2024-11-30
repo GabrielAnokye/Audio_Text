@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio-to-Text Transcriber</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles.css')}}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Audio-to-Text Transcriber</h1>
+
+      <div class="file-upload">
+        <label for="audio-file">Upload Audio File</label>
+        <input type="file" id="audio-file" accept="audio/*" />
+        <button id="transcribe-btn">Transcribe</button>
+      </div>
+
+      <div id="transcription-output">
+        <h2>Transcription</h2>
+        <p id="transcription-text"></p>
+        <div>
+          <button id="copy-transcription" title="Copy Transcription">📋</button>
+        </div>
+      </div>
+
+      <div class="summary-section">
+        <div class="summary-buttons">
+          <button id="generate-summary">Generate Summary</button>
+          <button id="generate-bullet-summary">Generate Bullet Summary</button>
+        </div>
+        <h2>Summary</h2>
+        <p id="summary-text"></p>
+        <div>
+          <button id="copy-summary" title="Copy Summary">📋</button>
+        </div>
+      </div>
+    </div>
+    <div class="prompt-section">
+      <h2>Give Prompt</h2>
+      <textarea
+        id="custom-prompt"
+        placeholder="Enter your prompt here"
+      ></textarea>
+      <button id="generate-custom-prompt">Generate</button>
+      <h3>Output</h3>
+      <p id="custom-output"></p>
+      <div>
+        <button id="copy-chat" title="Copy Output">📋</button>
+      </div>
+    </div>
+
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+  </body>
+</html>
