@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Audio-to-Text Transcriber</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles.css')}}"
+    />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-box">
+        <h1>Login</h1>
+        <div class="auth-form">
+          <input type="email" id="loginEmail" placeholder="Email" />
+          <input type="password" id="loginPassword" placeholder="Password" />
+          <button onclick="handleLogin()">Login</button>
+          <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <!-- Our custom scripts -->
+    <script src="{{url_for('static', filename='firebase-config.js')}}"></script>
+    <script src="{{url_for('static', filename='auth.js')}}"></script>
+  </body>
+</html>

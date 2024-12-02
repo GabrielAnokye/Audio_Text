@@ -13,32 +13,51 @@
     <div class="container">
       <h1>Audio-to-Text Transcriber</h1>
 
-      <div class="file-upload">
-        <label for="audio-file">Upload Audio File</label>
-        <input type="file" id="audio-file" accept="audio/*" />
-        <button id="transcribe-btn">Transcribe</button>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('main')">Main</button>
+        <button class="tab-btn" onclick="showTab('history')">History</button>
       </div>
 
-      <div id="transcription-output">
-        <h2>Transcription</h2>
-        <p id="transcription-text"></p>
-        <div>
-          <button id="copy-transcription" title="Copy Transcription">📋</button>
+      <div id="main-tab" class="tab-content active">
+        <div class="file-upload">
+          <label for="audio-file">Upload Audio File</label>
+          <input type="file" id="audio-file" accept="audio/*" />
+          <button id="transcribe-btn">Transcribe</button>
+        </div>
+
+        <div id="transcription-output">
+          <h2>Transcription</h2>
+          <p id="transcription-text"></p>
+          <div>
+            <button id="copy-transcription" title="Copy Transcription">
+              📋
+            </button>
+          </div>
+        </div>
+
+        <div class="summary-section">
+          <div class="summary-buttons">
+            <button id="generate-summary">Generate Summary</button>
+            <button id="generate-bullet-summary">
+              Generate Bullet Summary
+            </button>
+          </div>
+          <h2>Summary</h2>
+          <p id="summary-text"></p>
+          <div>
+            <button id="copy-summary" title="Copy Summary">📋</button>
+          </div>
         </div>
       </div>
 
-      <div class="summary-section">
-        <div class="summary-buttons">
-          <button id="generate-summary">Generate Summary</button>
-          <button id="generate-bullet-summary">Generate Bullet Summary</button>
-        </div>
-        <h2>Summary</h2>
-        <p id="summary-text"></p>
-        <div>
-          <button id="copy-summary" title="Copy Summary">📋</button>
+      <div id="history-tab" class="tab-content">
+        <h2>Transcription History</h2>
+        <div id="history-list">
+          <!-- Transcriptions will be loaded here -->
         </div>
       </div>
     </div>
+
     <div class="prompt-section">
       <h2>Give Prompt</h2>
       <textarea
@@ -53,6 +72,15 @@
       </div>
     </div>
 
+    <button onclick="handleLogout()" class="logout-btn">Logout</button>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Custom Scripts -->
+    <script src="{{url_for('static', filename='firebase-config.js')}}"></script>
+    <script src="{{url_for('static', filename='auth.js')}}"></script>
     <script src="{{url_for('static', filename='script.js')}}"></script>
   </body>
 </html>
